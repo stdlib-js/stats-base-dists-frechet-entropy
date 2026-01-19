@@ -4,7 +4,7 @@
 
 <section class="release" id="unreleased">
 
-## Unreleased (2025-06-26)
+## Unreleased (2026-01-19)
 
 <section class="features">
 
@@ -44,6 +44,9 @@ This release closes the following issue:
 
 <details>
 
+-   [`3459117`](https://github.com/stdlib-js/stdlib/commit/345911757db54bdd60ac0e41615b421536a2f4a4) - **test:** remove duplicate test cases in `stats/base/dists/frechet` packages _(by Philipp Burckhardt)_
+-   [`fc438e0`](https://github.com/stdlib-js/stdlib/commit/fc438e0edbad0689d6923d6f3edb959b96597662) - **test:** use standardized assertion messages and fix lint errors _(by Philipp Burckhardt)_
+-   [`9c21fd2`](https://github.com/stdlib-js/stdlib/commit/9c21fd20ef8b8a6a88abb96d80ea6d8e4c5434eb) - **test:** use .strictEqual() instead of .equal() _(by Philipp Burckhardt)_
 -   [`6dff3f6`](https://github.com/stdlib-js/stdlib/commit/6dff3f60707c731841791e37fc10907272e626ce) - **build:** fix missing dep _(by Athan Reines)_
 -   [`74596d4`](https://github.com/stdlib-js/stdlib/commit/74596d4df6801d9176bd5027eb237497e9b078c0) - **fix:** remove unused `eps` dependency from Frechet distribution manifests _(by Philipp Burckhardt)_
 -   [`5e44099`](https://github.com/stdlib-js/stdlib/commit/5e44099fdb881915f888ee279bfc87f3b8bd1c49) - **feat:** add C implementation for `stats/base/dists/frechet/entropy` [(#4597)](https://github.com/stdlib-js/stdlib/pull/4597) _(by Manvith M, Philipp Burckhardt)_
