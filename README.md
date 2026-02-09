@@ -62,19 +62,32 @@ where `γ` is the [Euler–Mascheroni constant][euler-mascheroni].
 
 <!-- Package usage documentation. -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/stats-base-dists-frechet-entropy
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
 ```javascript
-import entropy from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-dists-frechet-entropy@esm/index.mjs';
-```
-The previous example will load the latest bundled code from the esm branch. Alternatively, you may load a specific version by loading the file from one of the [tagged bundles](https://github.com/stdlib-js/stats-base-dists-frechet-entropy/tags). For example,
-
-```javascript
-import entropy from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-dists-frechet-entropy@v0.3.1-esm/index.mjs';
+var entropy = require( '@stdlib/stats-base-dists-frechet-entropy' );
 ```
 
 #### entropy( alpha, s, m )
@@ -145,15 +158,10 @@ y = entropy( 1.0, -1.0, 2.0 );
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="module">
-
-import randu from 'https://cdn.jsdelivr.net/gh/stdlib-js/random-base-randu@esm/index.mjs';
-import EPS from 'https://cdn.jsdelivr.net/gh/stdlib-js/constants-float64-eps@esm/index.mjs';
-import entropy from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-dists-frechet-entropy@esm/index.mjs';
+```javascript
+var randu = require( '@stdlib/random-base-randu' );
+var EPS = require( '@stdlib/constants-float64-eps' );
+var entropy = require( '@stdlib/stats-base-dists-frechet-entropy' );
 
 var alpha;
 var m;
@@ -168,10 +176,6 @@ for ( i = 0; i < 10; i++ ) {
     y = entropy( alpha, s, m );
     console.log( 'α: %d, s: %d, m: %d, h(X;α,s,m): %d', alpha.toFixed( 4 ), s.toFixed( 4 ), m.toFixed( 4 ), y.toFixed( 4 ) );
 }
-
-</script>
-</body>
-</html>
 ```
 
 </section>
@@ -180,7 +184,102 @@ for ( i = 0; i < 10; i++ ) {
 
 <!-- C interface documentation. -->
 
+* * *
 
+<section class="c">
+
+## C APIs
+
+<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
+
+<section class="intro">
+
+</section>
+
+<!-- /.intro -->
+
+<!-- C usage documentation. -->
+
+<section class="usage">
+
+### Usage
+
+```c
+#include "stdlib/stats/base/dists/frechet/entropy.h"
+```
+
+#### stdlib_base_dists_frechet_entropy( alpha, s, m )
+
+Returns the differential entropy for a Fréchet distribution with shape `alpha`, scale `s`, and location `m`.
+
+```c
+double y = stdlib_base_dists_frechet_entropy( 5.0, 2.0, 0.0 );
+// returns ~0.776
+```
+
+The function accepts the following arguments:
+
+-   **alpha**: `[in] double` shape parameter.
+-   **s**: `[in] double` scale parameter.
+-   **m**: `[in] double` location parameter.
+
+```c
+double stdlib_base_dists_frechet_entropy( const double alpha, const double s, const double m );
+```
+
+</section>
+
+<!-- /.usage -->
+
+<!-- C API usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+
+<section class="notes">
+
+</section>
+
+<!-- /.notes -->
+
+<!-- C API usage examples. -->
+
+<section class="examples">
+
+### Examples
+
+```c
+#include "stdlib/stats/base/dists/frechet/entropy.h"
+#include "stdlib/constants/float64/eps.h"
+#include <stdlib.h>
+#include <stdio.h>
+
+static double random_uniform( const double min, const double max ) {
+    double v = (double)rand() / ( (double)RAND_MAX + 1.0 );
+    return min + ( v*(max-min) );
+}
+
+int main( void ) {
+   double alpha;
+   double s;
+   double m;
+   double y;
+   int i;
+
+    for ( i = 0; i < 10; i++ ) {
+       alpha = random_uniform( STDLIB_CONSTANT_FLOAT64_EPS, 20.0 );
+       s = random_uniform( STDLIB_CONSTANT_FLOAT64_EPS, 20.0 );
+       m = random_uniform( -20.0, 20.0 );
+       y = stdlib_base_dists_frechet_entropy( alpha, s, m );
+       printf( "α: %.4lf, s: %.4lf, m: %.4lf, h(X;α,s,m): %.4lf\n", alpha, s, m, y );
+    }
+}
+```
+
+</section>
+
+<!-- /.examples -->
+
+</section>
+
+<!-- /.c -->
 
 <!-- Section for related `stdlib` packages. Do not manually edit this section, as it is automatically populated. -->
 
@@ -199,7 +298,7 @@ for ( i = 0; i < 10; i++ ) {
 
 ## Notice
 
-This package is part of [stdlib][stdlib], a standard library with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
+This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
 
 For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
 
@@ -229,8 +328,8 @@ Copyright &copy; 2016-2026. The Stdlib [Authors][stdlib-authors].
 [npm-image]: http://img.shields.io/npm/v/@stdlib/stats-base-dists-frechet-entropy.svg
 [npm-url]: https://npmjs.org/package/@stdlib/stats-base-dists-frechet-entropy
 
-[test-image]: https://github.com/stdlib-js/stats-base-dists-frechet-entropy/actions/workflows/test.yml/badge.svg?branch=v0.3.1
-[test-url]: https://github.com/stdlib-js/stats-base-dists-frechet-entropy/actions/workflows/test.yml?query=branch:v0.3.1
+[test-image]: https://github.com/stdlib-js/stats-base-dists-frechet-entropy/actions/workflows/test.yml/badge.svg?branch=main
+[test-url]: https://github.com/stdlib-js/stats-base-dists-frechet-entropy/actions/workflows/test.yml?query=branch:main
 
 [coverage-image]: https://img.shields.io/codecov/c/github/stdlib-js/stats-base-dists-frechet-entropy/main.svg
 [coverage-url]: https://codecov.io/github/stdlib-js/stats-base-dists-frechet-entropy?branch=main
